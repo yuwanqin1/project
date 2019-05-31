@@ -1,0 +1,27 @@
+@mixin w_100{ 
+    width: 100%;
+ }
+@mixin h_100{ 
+    height: 100%;
+}
+@mixin wh_100{
+    @include w_100;
+    @include h_100;
+}
+
+@mixin flex_r {
+    display: flex;
+    flex-direction: row;
+}
+@mixin flex_rs {
+    display: flex;
+    flex-direction: row-reverse;
+}
+@mixin flex_c {
+    display: flex;
+    flex-direction: column;
+}
+@mixin flex_cs {
+    display: flex;
+    flex-direction: column-reverse;
+}
