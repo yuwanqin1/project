@@ -7,7 +7,7 @@ import element from 'element-ui'
 import iView from 'iview'
 import 'element-ui/lib/theme-chalk/index.css'
 import 'iview/dist/styles/iview.css'
-/* import '../public/static/iconfont/iconfont.css' */
+import '../public/static/iconfont/iconfont.css'
 
 /* public\static\iconfont\iconfont.css */
 
