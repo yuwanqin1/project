@@ -1,0 +1,8 @@
+1. 选择合适的图标，选择添加入库
+2. 在购物车点击“添加到项目”，将选择的图标添加到“InfeiniPLM”项目，然后在项目里下载代码
+3. 将下载文件解压后的所有文件拷贝到static/iconfont文件夹(public/static/iconfont：后两个文件是新建的可以自定义)
+    可以选择拷贝:拷贝文件夹(*.css,*.eot,*.svg,*.ttf,*.js,*.html)
+4. demo_index.html可以查看可使用图标
+5. 使用方法请参考，demo_index.html,里面Unicode/Font/class Symbol分类下方使用
+    单色图标使用font-class方法引用图标:<i class="iconfont icon-xxx"></i>
+    eg: <i class="iconfont icon-xiangxiazhanhang"/>
