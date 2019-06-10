@@ -39,7 +39,7 @@ export default class Index extends Vue {
     icon: 'img5.jpg',
     content: [
       { name: '我的', type: 1 },
-      { name: '设置wwwwwwwwwwwwwwwwwwwwww', type: 2 },
+      { name: '设置', type: 2 },
       { name: '资料', type: 2 }
     ]
   }
