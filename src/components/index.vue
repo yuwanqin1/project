@@ -41,7 +41,8 @@ export default class Index extends Vue {
       { name: '我的', icon: 'icon-user', type: 1 },
       { name: '设置', icon: 'icon-icon--', type: 2 },
       { name: '切换', icon: 'icon-qiehuanyonghu', type: 3 },
-      { name: '退出', icon: 'icon-tuichu', type: 4 }
+      { name: '退出', icon: 'icon-tuichu', type: 4 },
+      { name: '修改密码', icon: 'icon-tuichu', type: 5 },
     ]
   }
   clickMenu (data: any) {
