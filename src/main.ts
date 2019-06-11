@@ -4,6 +4,7 @@ import router from './router/index'
 import store from './store'
 import './registerServiceWorker'
 import element from 'element-ui'
+/* 替换:import Vue, {PluginObject} from 'vue' */
 import iView from 'iview'
 import 'element-ui/lib/theme-chalk/index.css'
 import 'iview/dist/styles/iview.css'

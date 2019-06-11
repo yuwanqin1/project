@@ -74,7 +74,7 @@ $menu-width: 250px;
         justify-content: space-around;
         .index-menu{
           @include flex_r;
-          width: 85%;
+          width: 88%;
           height: 100%;
           div{
             height: 100%;
