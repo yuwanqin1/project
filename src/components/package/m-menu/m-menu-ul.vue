@@ -1,7 +1,8 @@
 <template>
     <ul class="menu-ul">
+        <p>测试</p>
         <li v-for="(item, index) in ulData" :key="index">
-            {{item.name}}
+            <i :class="`iconfont ${item.icon}`"/>{{item.name}}
         </li>
     </ul>
 </template>
@@ -20,13 +21,20 @@ export default class MMenuUl extends Vue {
     @include wh_100;
     @include font;
     background: white;
-    padding: 15px 0;
     font-size: 14px;
-    box-shadow: 10px 10px 5px #888888;
+    box-shadow: 1px 1px 3px #888888;
+    p{
+        padding: 6px 0 5px 5px;
+        font-weight: bold;
+        @include font;
+    }
     li{
         @include ellipsis(100px, 150px);
         list-style: none;
         padding: 3px 15px;
+        &:hover{
+            background: red
+        }
     }
 }
 </style>
