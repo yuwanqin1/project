@@ -7,7 +7,8 @@
                 <i v-if="showI" class="iconfont icon-xiangshangzhanhang"/>
                 <i v-else class="iconfont icon-xiangxiazhanhang"/>
                 <div v-if="!showI" class="title-ul">
-                    <m-menu-ul :ul-data="titleData.content"/>
+                    <!-- 这里有父组件调用孙组件方法案例:$listeners -->
+                    <m-menu-ul v-on="$listeners" :ul-data="titleData.content"/>
                 </div>
             </div>
         </div>
@@ -47,7 +48,7 @@ export default class MMenuTitle extends Vue {
             .title-ul{
                 position: absolute;
                 top: 50px;
-                right: 50px;
+                right: 30px;
             }
         }
     }

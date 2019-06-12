@@ -7,7 +7,7 @@
         </div>
       </div>
       <div class="index-user">
-        <m-menu-title :titleData="titleData"></m-menu-title>
+        <m-menu-title @menuClick="menuClicks" :titleData="titleData"></m-menu-title>
       </div>
     </div>
     <div class="index-content">
@@ -35,13 +35,14 @@ export default class Index extends Vue {
   ]
   titleData: any = {
     id: 1,
-    name: '用户名',
+    name: 'tom yu',
     icon: 'img5.jpg',
     content: [
-      { name: '我的', icon: 'icon-user', type: 1 },
-      { name: '设置', icon: 'icon-icon--', type: 2 },
-      { name: '切换', icon: 'icon-qiehuanyonghu', type: 3 },
-      { name: '退出', icon: 'icon-tuichu', type: 4 }
+      { type: 1, name: '我的', icon: 'icon-user' },
+      { type: 2, name: '设置', icon: 'icon-icon--' },
+      { type: 3, name: '切换', icon: 'icon-qiehuanyonghu' },
+      { type: 4, name: '登陆', icon: 'icon-tuichu' },
+      { type: 5, name: '退出', icon: 'icon-tuichu' }
     ]
   }
   clickMenu (data: any) {
@@ -49,20 +50,27 @@ export default class Index extends Vue {
       path: data.path
     })
   }
+  menuClicks (data:any) {
+    console.log('yeye:', data)
+  }
 }
+/* 
+计算高度
+height: calc(100% - #{$page-height}); 
+*/
 </script>
 
 <style lang="scss" scope>
 @import "~@/theme/index.scss";
 @import "~@/theme/themeColor.scss";
+
 $height: 50px;
 $menu-width: 250px;
 .index{
     @include flex_c;
     @include wh_100;
     background-color:rgba(201, 238, 240, 0.3);
-     /* z-index: -1;
-    filter: blur(1px);
+     /*filter: blur(1px);
     background: url("../assets/img/back.jpg") no-repeat;
     background-size: 100% 100%; */
     .index-title{
