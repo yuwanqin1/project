@@ -38,7 +38,7 @@ export default class Index extends Vue {
     name: 'tom yu',
     icon: 'img5.jpg',
     content: [
-      { type: 1, name: '我的', icon: 'icon-user' },
+      { type: 1, name: '我----的', icon: 'icon-user' },
       { type: 2, name: '设置', icon: 'icon-icon--' },
       { type: 3, name: '切换', icon: 'icon-qiehuanyonghu' },
       { type: 4, name: '登陆', icon: 'icon-tuichu' },
