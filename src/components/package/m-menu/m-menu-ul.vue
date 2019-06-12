@@ -28,18 +28,22 @@ export default class MMenuUl extends Vue {
     background: white;
     font-size: 14px;
     box-shadow: 1px 1px 3px #888888;
+    border-radius: 5%;
     p{
         padding: 6px 0 5px 5px;
         font-weight: bold;
         @include font;
-        background: #dddddd
+        background: #dddddd;
+        border-radius: 10% 10% 0 0;
     }
     li{
         @include ellipsis(100px, 150px);
         list-style: none;
         padding: 3px 15px;
+        border-bottom: $border;
         &:hover{
-            background: $bcak2
+            background: $bcak2;
+            box-shadow: 1px 0 1px #888888;
         }
     }
 }

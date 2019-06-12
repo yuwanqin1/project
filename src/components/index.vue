@@ -20,7 +20,7 @@
 
 <script lang="ts">
 /* import userTile from '@/assets/img/img1.jpg' */
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
 import mMenu from '@/components/package/m-menu/m-menu.vue'
 import mMenuTitle from '@/components/package/m-menu/m-menu-title.vue'
 
@@ -28,6 +28,11 @@ import mMenuTitle from '@/components/package/m-menu/m-menu-title.vue'
   components: { mMenu, mMenuTitle }
 })
 export default class Index extends Vue {
+ /*ts监听
+  @Watch('res')
+  resChange(val: number, oldVal: number){
+    console.log('监听:', val)
+  } */
   menuData: any = [
     { name: '首页', path: '/' },
     { name: '用户', path: 'user' },
@@ -41,7 +46,7 @@ export default class Index extends Vue {
       { type: 1, name: '我的', icon: 'icon-user' },
       { type: 2, name: '设置', icon: 'icon-icon--' },
       { type: 3, name: '切换', icon: 'icon-qiehuanyonghu' },
-      { type: 4, name: '登陆', icon: 'icon-tuichu' },
+      { type: 4, name: '登陆', icon: 'icon-denglu' },
       { type: 5, name: '退出', icon: 'icon-tuichu' }
     ]
   }
@@ -51,7 +56,7 @@ export default class Index extends Vue {
     })
   }
   menuClicks (data:any) {
-    console.log('yeye:', data)
+    data.push('测试')
   }
 }
 /* 
