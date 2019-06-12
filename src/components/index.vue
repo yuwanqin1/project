@@ -40,6 +40,7 @@ export default class Index extends Vue {
     content: [
       { type: 1, name: '我的', icon: 'icon-user' },
       { type: 2, name: '设置', icon: 'icon-icon--' },
+      { type: 3, name: '切换', icon: 'icon-qiehuanyonghu' },
       { type: 4, name: '登陆', icon: 'icon-tuichu' },
       { type: 5, name: '退出', icon: 'icon-tuichu' }
     ]
