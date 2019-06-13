@@ -7,7 +7,7 @@
         </div>
       </div>
       <div class="index-user">
-        <m-menu-title @menuClick="menuClicks" :titleData="titleData"></m-menu-title>
+        <m-menu-title @menuClick="menuClicks" :titleData="titleData"/>
       </div>
     </div>
     <div class="index-content">
@@ -15,6 +15,7 @@
         <router-view/>
       </transition>
     </div>
+    <m-dialog showName="dialogShow" v-show="dialogShow" :styles="{height: '500px', width: '500px'}"/>
   </div>
 </template>
 
@@ -23,9 +24,10 @@
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
 import mMenu from '@/components/package/m-menu/m-menu.vue'
 import mMenuTitle from '@/components/package/m-menu/m-menu-title.vue'
+import mDialog from '@/components/package/m-dialog/m-dialog.vue';
 
 @Component({
-  components: { mMenu, mMenuTitle }
+  components: { mMenu, mMenuTitle, mDialog }
 })
 export default class Index extends Vue {
  /*ts监听
@@ -33,6 +35,7 @@ export default class Index extends Vue {
   resChange(val: number, oldVal: number){
     console.log('监听:', val)
   } */
+  dialogShow: boolean = true;
   menuData: any = [
     { name: '首页', path: '/' },
     { name: '用户', path: 'user' },
@@ -56,7 +59,7 @@ export default class Index extends Vue {
     })
   }
   menuClicks (data:any) {
-    data.push('测试')
+    this.dialogShow = true
   }
 }
 /* 

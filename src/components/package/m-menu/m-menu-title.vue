@@ -1,12 +1,12 @@
 <template>
     <div class="menu-title">
         <img class="title-img" :src="imgs" alt="头像">
-        <div class="title-user" @click="showI = !showI" @mouseleave="showI = true">
+        <div class="title-user" @click="showI = !showI" @mouseleave="showI = false">
             <div class="title">
                 {{titleData.name}}
                 <i v-if="showI" class="iconfont icon-xiangshangzhanhang"/>
                 <i v-else class="iconfont icon-xiangxiazhanhang"/>
-                <div v-if="!showI" class="title-ul">
+                <div v-if="showI" class="title-ul">
                     <!-- 这里有父组件调用孙组件方法案例:$listeners -->
                     <m-menu-ul v-on="$listeners" :ul-data="titleData.content"/>
                 </div>
