@@ -15,7 +15,17 @@
         <router-view/>
       </transition>
     </div>
-    <m-dialog showName="dialogShow" v-show="dialogShow" :styles="{height: '500px', width: '500px'}"/>
+    <m-dialog @close="closeDialog" path="" v-show="dialogShow" :styles="{height: '300px', width: '500px'}">
+      <template #title="scope">
+        <div><Icon type="navicon-round"></Icon>{{scope.test}}:</div>
+      </template>
+      <template #content>
+        <div style="color: red;">新内容</div>
+      </template>
+      <template #button>
+        <div>按钮</div>
+      </template>
+    </m-dialog>
   </div>
 </template>
 
@@ -35,7 +45,7 @@ export default class Index extends Vue {
   resChange(val: number, oldVal: number){
     console.log('监听:', val)
   } */
-  dialogShow: boolean = true;
+  dialogShow: boolean = false;
   menuData: any = [
     { name: '首页', path: '/' },
     { name: '用户', path: 'user' },
@@ -60,6 +70,9 @@ export default class Index extends Vue {
   }
   menuClicks (data:any) {
     this.dialogShow = true
+  }
+  closeDialog () {
+    this.dialogShow =false
   }
 }
 /* 

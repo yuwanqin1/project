@@ -1,14 +1,23 @@
 <template>
-    <div class="dialog">
+    <div class="dialog" v-show="show">
         <div class="dialog-mask"></div>
         <div class="dialog-content" ref="dialog" :style="styles">
             <div class="title">
-                <div>标题</div>
+                <div>
+                    <slot name="title" test="title">
+                        
+                    </slot>
+                </div>
                 <div @click="maskClick"><i class="el-icon-close"/></div>
             </div>
+            <div class="content">
+                <slot name="content" test="标题"/>
+            </div>
             <div class="bottom">
-                <el-button @click="maskClick">取消</el-button>
-                <el-button type="success">确定</el-button>
+                <slot name="button">
+                    <el-button @click="maskClick">取消</el-button>
+                    <el-button type="success">确定</el-button>
+                </slot>
             </div>
         </div>
     </div>
@@ -16,18 +25,33 @@
 
 <script lang="ts">
 import { Vue, Component, Prop, Watch, Emit } from 'vue-property-decorator'
+
+/* 定义接口 */
+interface types { [key: string]: string }
+
 @Component({
     components: {}
 })
 /* 引用组件必须定义dialogShow */
 export default class Dialog extends Vue{
+    /* 重点知识:解决$refs访问时警告 */
+    $refs!: { dialog: HTMLElement }
+    @Prop({ default: 'router' }) path!: string
     @Prop({ default: 'dialogShow' }) showName!: string
-    @Prop({ default: () => { return { height: '500px', width: '500px' } }}) styles!: object
+    /* 重点知识:通过接口解决键值对类型 */
+    @Prop({ default: () => { return { height: '500px', width: '500px' } }}) styles!: types
+
     dialogTop!: string
     dialogLeft!: string
+    show: boolean = true
     screen: any = { height: document.body.clientHeight, width: document.body.clientWidth }
+
     maskClick () {
-        this.$parent[this.showName] = false
+        /* this.$parent.dialogShow = false:
+        这是直接修改父组件里控制dialog显示隐藏属性
+        但是ts语法不允许这样操作,所以暂时放弃 */
+        if (this.path === 'router') this.$router.go(-1)
+        this.$emit('close')
     }
     dialogDosition () {
         this.$refs.dialog.style.top = (this.screen.height - parseInt(this.styles.height)) / 2 + 'px'
@@ -51,6 +75,8 @@ export default class Dialog extends Vue{
 @import "~@/theme/themeColor.scss";
 
 $title-hight: 50px;
+.border-bottom{ border-bottom: $border; }
+
 .dialog{
     position: absolute;
     .dialog-content{
@@ -63,7 +89,7 @@ $title-hight: 50px;
             justify-content: space-between;
             height: $title-hight;
             width: 100%;
-            border-bottom: $border;
+            @extend .border-bottom;
             div:nth-of-type(1){
                 display: flex;
                 align-items: center;
@@ -89,7 +115,15 @@ $title-hight: 50px;
             width: 95%;
             display: flex;
             flex-direction: row-reverse;
-            align-items: flex-end;
+            align-items: center;
+
+        }
+        .content{
+            position: absolute;
+            top: $title-hight;
+            height: calc(100% - #{$title-hight * 2});
+            @include w_100;
+            @extend .border-bottom;
         }
     }
     .dialog-mask{

@@ -8,6 +8,10 @@
     @include w_100;
     @include h_100;
 }
+@mixin wh_x($size: 100%) {
+    width: $size;
+    height: $size;
+}
 
 @mixin flex_r {
     display: flex;
