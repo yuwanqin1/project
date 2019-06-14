@@ -1,0 +1,111 @@
+$theme: #1aa97a !default;
+$primary: $theme !default;
+$warning: #e6a23c !default;
+$error: #f56c6c !default;
+
+$normal-bg: white;
+$primary-bg: $primary;
+$warning-bg: $warning;
+$error-bg: $error;
+
+$disableMix: black;
+$disableMixWeight: 30%;
+
+$hoverMix: white;
+$hoverMixWeight: 10%;
+@mixin button-disabled {
+  cursor: not-allowed;
+}
+
+.m-button {
+  display: inline-block;
+  text-align: center;
+  font-size: 12px;
+  padding: 2px 15px;
+  cursor: pointer;
+  border: 1px solid;
+  outline: none;/* 元素外边框样式 */
+  color: $theme;
+  white-space: nowrap;
+  overflow: hidden;
+  min-width: 20px;
+  background-color: $normal-bg;
+  height: 32px;
+  /* disabled:禁止属性启用时的样式 */
+  &:disabled {
+    border-color: mix($disableMix, $normal-bg, $disableMixWeight);
+    background-color: mix($disableMix, $normal-bg, $disableMixWeight);
+    @include button-disabled;
+  }
+  /* disabled:禁止属性关闭时的样式 */
+  &:enabled:hover {
+    background-color: mix($primary, $normal-bg, $hoverMixWeight);
+  }
+
+  &.small {
+    height: 24px;
+  }
+
+  &.large {
+    height: 40px;
+  }
+
+  &.text {
+    color: black;
+    border: none;
+
+    &:hover {
+      color: $theme;
+    }
+  }
+
+  &.primary {
+    color: white;
+    border-color: $primary-bg;
+    background-color: $primary;
+
+    &:disabled {
+      border-color: mix($disableMix, $primary-bg, $disableMixWeight);
+      background-color: mix($disableMix, $primary-bg, $disableMixWeight);
+      @include button-disabled;
+    }
+
+    &:enabled:hover {
+      background-color: mix($hoverMix, $primary-bg, $hoverMixWeight);
+    }
+  }
+
+  &.warning {
+    border: 1px solid $warning;
+    color: $warning;
+
+    &:disabled {
+      border-color: mix($disableMix, $warning-bg, $disableMixWeight);
+      background-color: mix($disableMix, $warning-bg, $disableMixWeight);
+      @include button-disabled;
+    }
+
+    &:enabled:hover {
+      border: 1px solid mix($hoverMix, $warning-bg, $hoverMixWeight);
+      background-color: mix($hoverMix, $warning-bg, $hoverMixWeight);
+      color: white;
+    }
+  }
+
+  &.error {
+    border: 1px solid $error-bg;
+    color: $error;
+
+    &:disabled {
+      border-color: mix($disableMix, $error-bg, $disableMixWeight);
+      background-color: mix($disableMix, $error-bg, $disableMixWeight);
+      @include button-disabled;
+    }
+
+    &:enabled:hover {
+      border: 1px solid mix($hoverMix, $error-bg, $hoverMixWeight);
+      background-color: mix($hoverMix, $error-bg, $hoverMixWeight);
+      color: white;
+    }
+  }
+}

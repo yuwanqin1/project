@@ -17,14 +17,16 @@
     </div>
     <m-dialog @close="closeDialog" path="" v-show="dialogShow" :styles="{height: '300px', width: '500px'}">
       <template #title="scope">
-        <div><Icon type="navicon-round"></Icon>{{scope.test}}:</div>
+        <div>
+          <i class="iconfont icon-weibiaoti9"/>{{scope.title}}
+        </div>
       </template>
       <template #content>
         <div style="color: red;">新内容</div>
       </template>
-      <template #button>
+      <!-- <template #button>
         <div>按钮</div>
-      </template>
+      </template> -->
     </m-dialog>
   </div>
 </template>

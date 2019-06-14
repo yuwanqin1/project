@@ -1,0 +1,96 @@
+@charset "UTF-8";
+.m-button {
+  display: inline-block;
+  text-align: center;
+  font-size: 12px;
+  padding: 2px 15px;
+  cursor: pointer;
+  border: 1px solid;
+  outline: none;
+  /* 元素外边框样式 */
+  color: #1aa97a;
+  white-space: nowrap;
+  overflow: hidden;
+  min-width: 20px;
+  background-color: white;
+  height: 32px;
+  /* disabled:禁止属性启用时的样式 */
+  /* disabled:禁止属性关闭时的样式 */
+}
+
+.m-button:disabled {
+  border-color: #b3b3b3;
+  background-color: #b3b3b3;
+  cursor: not-allowed;
+}
+
+.m-button:enabled:hover {
+  background-color: #e8f6f2;
+}
+
+.m-button.small {
+  height: 24px;
+}
+
+.m-button.large {
+  height: 40px;
+}
+
+.m-button.text {
+  color: black;
+  border: none;
+}
+
+.m-button.text:hover {
+  color: #1aa97a;
+}
+
+.m-button.primary {
+  color: white;
+  border-color: #1aa97a;
+  background-color: #1aa97a;
+}
+
+.m-button.primary:disabled {
+  border-color: #127655;
+  background-color: #127655;
+  cursor: not-allowed;
+}
+
+.m-button.primary:enabled:hover {
+  background-color: #31b287;
+}
+
+.m-button.warning {
+  border: 1px solid #e6a23c;
+  color: #e6a23c;
+}
+
+.m-button.warning:disabled {
+  border-color: #a1712a;
+  background-color: #a1712a;
+  cursor: not-allowed;
+}
+
+.m-button.warning:enabled:hover {
+  border: 1px solid #e9ab50;
+  background-color: #e9ab50;
+  color: white;
+}
+
+.m-button.error {
+  border: 1px solid #f56c6c;
+  color: #f56c6c;
+}
+
+.m-button.error:disabled {
+  border-color: #ac4c4c;
+  background-color: #ac4c4c;
+  cursor: not-allowed;
+}
+
+.m-button.error:enabled:hover {
+  border: 1px solid #f67b7b;
+  background-color: #f67b7b;
+  color: white;
+}

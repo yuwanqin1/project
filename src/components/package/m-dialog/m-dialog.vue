@@ -4,19 +4,21 @@
         <div class="dialog-content" ref="dialog" :style="styles">
             <div class="title">
                 <div>
-                    <slot name="title" test="title">
-                        
+                    <slot name="title" title="标题">
+                        <i class="iconfont icon-weibiaoti9"/>
                     </slot>
                 </div>
-                <div @click="maskClick"><i class="el-icon-close"/></div>
+                <div @click="maskClick">
+                    <i class="iconfont icon-chacha1"/>
+                </div>
             </div>
             <div class="content">
-                <slot name="content" test="标题"/>
+                <slot name="content"/>
             </div>
             <div class="bottom">
                 <slot name="button">
-                    <el-button @click="maskClick">取消</el-button>
-                    <el-button type="success">确定</el-button>
+                    <m-button @click="maskClick">取消</m-button>
+                    <m-button type="success">确定</m-button>
                 </slot>
             </div>
         </div>
@@ -25,12 +27,13 @@
 
 <script lang="ts">
 import { Vue, Component, Prop, Watch, Emit } from 'vue-property-decorator'
+import mButton from '@/components/package/m-button/m-button.vue'
 
 /* 定义接口 */
 interface types { [key: string]: string }
 
 @Component({
-    components: {}
+    components: { mButton }
 })
 /* 引用组件必须定义dialogShow */
 export default class Dialog extends Vue{
@@ -95,6 +98,9 @@ $title-hight: 50px;
                 align-items: center;
                 width: 80%;
                 height: 100%;
+                .iconfont{
+                    font-size: 30px;
+                }
             }
             div:nth-of-type(2){
                 @include flex_cc;
