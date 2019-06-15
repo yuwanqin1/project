@@ -17,6 +17,23 @@ $hoverMixWeight: 10%;
   cursor: not-allowed;
 }
 
+/* 定义的方法 */
+@mixin border-back($border: $primary-bg, $back: $primary) {
+  border-color: $border;
+  background-color: $back;
+}
+@mixin back($hover: $hoverMix, $back: $primary-bg, $hoverMix: $hoverMixWeight) {
+  background-color: mix($hover, $back, $hoverMix);
+}
+@mixin border-color-back($hover: $hoverMix, $back: $primary-bg, $hoverMix: $hoverMixWeight) {
+  border-color: mix($hover, $back, $hoverMix);
+  @include back($hover, $back, $hoverMix)
+}
+@mixin border-backs($hover: $hoverMix, $back: $error-bg, $hoverMix: $hoverMixWeight) {
+  border: 1px solid mix($hover, $back, $hoverMix);
+  @include back($hover, $back, $hoverMix);
+}
+
 .m-button {
   display: inline-block;
   text-align: center;
@@ -33,8 +50,7 @@ $hoverMixWeight: 10%;
   height: 32px;
   /* disabled:禁止属性启用时的样式 */
   &:disabled {
-    border-color: mix($disableMix, $normal-bg, $disableMixWeight);
-    background-color: mix($disableMix, $normal-bg, $disableMixWeight);
+    @include border-color-back($disableMix, $normal-bg, $disableMixWeight);
     @include button-disabled;
   }
   /* disabled:禁止属性关闭时的样式 */
@@ -50,7 +66,14 @@ $hoverMixWeight: 10%;
     height: 40px;
   }
 
-  &.text {
+  &.text-ok {
+    color: $primary;
+    border: none;
+    &:hover{
+      color: rgb(89, 0, 255);
+    }
+  }
+  &.text-cancel {
     color: black;
     border: none;
 
@@ -61,17 +84,15 @@ $hoverMixWeight: 10%;
 
   &.primary {
     color: white;
-    border-color: $primary-bg;
-    background-color: $primary;
+    @include border-back;
 
     &:disabled {
-      border-color: mix($disableMix, $primary-bg, $disableMixWeight);
-      background-color: mix($disableMix, $primary-bg, $disableMixWeight);
+      @include border-color-back($disableMix, $primary-bg, $disableMixWeight);
       @include button-disabled;
     }
 
     &:enabled:hover {
-      background-color: mix($hoverMix, $primary-bg, $hoverMixWeight);
+      @include back;
     }
   }
 
@@ -80,14 +101,12 @@ $hoverMixWeight: 10%;
     color: $warning;
 
     &:disabled {
-      border-color: mix($disableMix, $warning-bg, $disableMixWeight);
-      background-color: mix($disableMix, $warning-bg, $disableMixWeight);
+      @include border-color-back($disableMix, $warning-bg, $disableMixWeight);
       @include button-disabled;
     }
 
     &:enabled:hover {
-      border: 1px solid mix($hoverMix, $warning-bg, $hoverMixWeight);
-      background-color: mix($hoverMix, $warning-bg, $hoverMixWeight);
+      @include border-color-back($disableMix, $warning-bg, $disableMixWeight);
       color: white;
     }
   }
@@ -97,14 +116,12 @@ $hoverMixWeight: 10%;
     color: $error;
 
     &:disabled {
-      border-color: mix($disableMix, $error-bg, $disableMixWeight);
-      background-color: mix($disableMix, $error-bg, $disableMixWeight);
+      @include border-color-back($disableMix, $error-bg, $disableMixWeight);
       @include button-disabled;
     }
 
     &:enabled:hover {
-      border: 1px solid mix($hoverMix, $error-bg, $hoverMixWeight);
-      background-color: mix($hoverMix, $error-bg, $hoverMixWeight);
+      @include border-backs;
       color: white;
     }
   }

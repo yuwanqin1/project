@@ -5,11 +5,23 @@
 </template>
 
 <script lang="ts">
-import { Vue, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
+
+@Component({
+    components: {}
+})
 export default class MButton extends Vue{
-    @Prop({ default: '' }) type!: string
+    @Prop({ default: '', validator: value => ['', 'text-ok', 'text-cancel', 'primary', 'warning', 'error'].indexOf(value) !== -1})
+    type!: string
+    @Prop({ default: '', validator: value => ['', 'small', 'large'].indexOf(value) !== -1 })
+    size!: string
+    @Prop({ default: false })
+    disabled!: boolean
     onClick (event: any) {
         this.$emit('click', event)
+    }
+    mounted () {
+        console.log(this.$props)
     }
 }
 </script>

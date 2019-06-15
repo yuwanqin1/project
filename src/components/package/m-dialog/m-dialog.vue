@@ -17,8 +17,8 @@
             </div>
             <div class="bottom">
                 <slot name="button">
-                    <m-button @click="maskClick">取消</m-button>
-                    <m-button type="success">确定</m-button>
+                    <m-button @click="maskClick" type="text-cancel">取消</m-button>
+                    <m-button type="text-ok">确定</m-button>
                 </slot>
             </div>
         </div>
@@ -88,8 +88,7 @@ $title-hight: 50px;
         border-radius: 2%;
         z-index: 50002;
         .title{
-            @include flex_r;
-            justify-content: space-between;
+            @include flex_rj(space-between);
             height: $title-hight;
             width: 100%;
             @extend .border-bottom;
@@ -130,6 +129,7 @@ $title-hight: 50px;
             height: calc(100% - #{$title-hight * 2});
             @include w_100;
             @extend .border-bottom;
+            @include flex_rc;
         }
     }
     .dialog-mask{

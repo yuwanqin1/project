@@ -18,15 +18,14 @@
     <m-dialog @close="closeDialog" path="" v-show="dialogShow" :styles="{height: '300px', width: '500px'}">
       <template #title="scope">
         <div>
-          <i class="iconfont icon-weibiaoti9"/>{{scope.title}}
+          <i class="iconfont icon-weibiaoti9"/>登陆{{scope.title}}
         </div>
       </template>
       <template #content>
-        <div style="color: red;">新内容</div>
+        <div style="color: red;">
+          <el-input v-model="input" placeholder="请输入内容"></el-input>
+        </div>
       </template>
-      <!-- <template #button>
-        <div>按钮</div>
-      </template> -->
     </m-dialog>
   </div>
 </template>
@@ -47,7 +46,8 @@ export default class Index extends Vue {
   resChange(val: number, oldVal: number){
     console.log('监听:', val)
   } */
-  dialogShow: boolean = false;
+  input: string = ''
+  dialogShow: boolean = true;
   menuData: any = [
     { name: '首页', path: '/' },
     { name: '用户', path: 'user' },
