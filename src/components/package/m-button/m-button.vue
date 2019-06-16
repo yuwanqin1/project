@@ -20,9 +20,6 @@ export default class MButton extends Vue{
     onClick (event: any) {
         this.$emit('click', event)
     }
-    mounted () {
-        console.log(this.$props)
-    }
 }
 </script>
 
