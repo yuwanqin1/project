@@ -66,21 +66,14 @@ $hoverMixWeight: 10%;
     height: 40px;
   }
 
-  &.text-ok {
-    color: $primary;
+  @mixin text ($color: $primary, $hover: $theme) {
+    color: $color;
     border: none;
-    &:hover{
-      color: rgb(89, 0, 255);
-    }
+    &:hover { color: $hover }
   }
-  &.text-cancel {
-    color: black;
-    border: none;
-
-    &:hover {
-      color: $theme;
-    }
-  }
+  &.text-ok { @include text($primary, rgb(89, 0, 255)) }
+  &.text-cancel { @include text(black, $theme) }
+  &.text-error { @include text($error, red) }
 
   &.primary {
     color: white;

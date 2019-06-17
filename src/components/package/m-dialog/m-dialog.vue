@@ -17,8 +17,8 @@
             </div>
             <div class="bottom">
                 <slot name="button">
-                    <m-button @click="maskClick" type="text-cancel">取消</m-button>
-                    <m-button type="text-ok">确定</m-button>
+                    <m-button @click="maskClick" type="text-cancel">注册</m-button>
+                    <m-button v-on="$listeners" type="text-ok">登陆</m-button>
                 </slot>
             </div>
         </div>
@@ -50,16 +50,22 @@ export default class Dialog extends Vue{
     screen: any = { height: document.body.clientHeight, width: document.body.clientWidth }
 
     maskClick () {
-        /* this.$parent.dialogShow = false:
-        这是直接修改父组件里控制dialog显示隐藏属性
-        但是ts语法不允许这样操作,所以暂时放弃 */
-        if (this.path === 'router') this.$router.go(-1)
-        this.$emit('close')
+        /* this.$parent.dialogShow = false:这是直接修改父组件里控制dialog显示隐藏属性
+            但是ts语法不允许这样操作,所以暂时放弃
+            ts Emit用法实例*/
+        this.close()
     }
     dialogDosition () {
         this.$refs.dialog.style.top = (this.screen.height - parseInt(this.styles.height)) / 2 + 'px'
         this.$refs.dialog.style.left = (this.screen.width - parseInt(this.styles.width)) / 2 + 'px'
     }
+
+    @Emit()
+    close () {
+        if (this.path === 'router') this.$router.go(-1)
+        this.$emit('close')
+    }
+    
     mounted () {
         this.dialogDosition()
         /* 给window挂onresize方法动态改变screen的值 */
@@ -78,6 +84,7 @@ export default class Dialog extends Vue{
 @import "~@/theme/themeColor.scss";
 
 $title-hight: 50px;
+$z-index: 100;
 .border-bottom{ border-bottom: $border; }
 
 .dialog{
@@ -86,7 +93,7 @@ $title-hight: 50px;
         position: fixed;
         background: white;
         border-radius: 2%;
-        z-index: 50002;
+        z-index: $z-index;
         .title{
             @include flex_rj(space-between);
             height: $title-hight;
@@ -138,7 +145,7 @@ $title-hight: 50px;
         left: 0;
         bottom: 0;
         right: 0;
-        z-index: 50001;
+        z-index: cacl(#{$z-index} - 1);
         background: rgba(0,0,0,0.5);
     }
 }

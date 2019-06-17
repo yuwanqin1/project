@@ -15,15 +15,18 @@
         <router-view/>
       </transition>
     </div>
-    <m-dialog @close="closeDialog" path="" v-show="dialogShow" :styles="{height: '300px', width: '500px'}">
+    <m-dialog @close="closeDialog" path="" v-show="dialogShow" :styles="{height: '300px', width: '500px'}" @click="save">
       <template #title="scope">
-        <div>
-          <i class="iconfont icon-weibiaoti9"/>登陆{{scope.title}}
-        </div>
+        <div><i class="iconfont icon-weibiaoti9"/>登陆{{scope.title}}</div>
       </template>
       <template #content>
-        <div style="color: red;">
-          <el-input v-model="input" placeholder="请输入内容"></el-input>
+        <div class="dialog">
+          <el-input v-model="user.name" placeholder="请输入账号">
+            <template slot="prepend">账号:</template>
+          </el-input>
+          <el-input v-model="user.password" placeholder="请输入密码">
+            <template slot="prepend">密码:</template>
+          </el-input>
         </div>
       </template>
     </m-dialog>
@@ -37,6 +40,11 @@ import mMenu from '@/components/package/m-menu/m-menu.vue'
 import mMenuTitle from '@/components/package/m-menu/m-menu-title.vue'
 import mDialog from '@/components/package/m-dialog/m-dialog.vue';
 
+interface users {
+  name: string,
+  password: string
+}
+
 @Component({
   components: { mMenu, mMenuTitle, mDialog }
 })
@@ -46,8 +54,7 @@ export default class Index extends Vue {
   resChange(val: number, oldVal: number){
     console.log('监听:', val)
   } */
-  input: string = ''
-  dialogShow: boolean = true;
+  dialogShow: boolean = false;
   menuData: any = [
     { name: '首页', path: '/' },
     { name: '用户', path: 'user' },
@@ -65,6 +72,19 @@ export default class Index extends Vue {
       { type: 5, name: '退出', icon: 'icon-tuichu' }
     ]
   }
+  user: users = { name: '', password: '' }
+
+  save () {
+    let data = {
+      names: 16 >= this.user.name.length && this.user.name.length >= 8, 
+      passwords: 16 >= this.user.password.length && this.user.password.length >= 12
+    }
+    if (data.names && data.passwords){
+      console.log('登陆成功')
+    } else {
+    this.$message.error(`${!data.names ? '账户' : '密码'}错误`)
+    }
+  }
   clickMenu (data: any) {
     this.$router.push({
       path: data.path
@@ -74,7 +94,7 @@ export default class Index extends Vue {
     this.dialogShow = true
   }
   closeDialog () {
-    this.dialogShow =false
+    this.dialogShow = false
   }
 }
 /* 
@@ -123,6 +143,11 @@ $menu-width: 250px;
         @include w_100;
         height: calc(100% - $height - 10px);
         overflow: auto;
+    }
+    .dialog{
+      @include flex_c;
+      justify-content: space-around;
+      @include wh_x(75%);
     }
 }
 </style>
