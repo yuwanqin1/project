@@ -35,7 +35,7 @@
 
 <script lang="ts">
 /* import userTile from '@/assets/img/img1.jpg' */
-import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
+import { Vue, Component, Prop, Watch, Inject } from 'vue-property-decorator'
 import mMenu from '@/components/package/m-menu/m-menu.vue'
 import mMenuTitle from '@/components/package/m-menu/m-menu-title.vue'
 import mDialog from '@/components/package/m-dialog/m-dialog.vue';
@@ -75,15 +75,7 @@ export default class Index extends Vue {
   user: users = { name: '', password: '' }
 
   save () {
-    let data = {
-      names: 16 >= this.user.name.length && this.user.name.length >= 8, 
-      passwords: 16 >= this.user.password.length && this.user.password.length >= 12
-    }
-    if (data.names && data.passwords){
-      console.log('登陆成功')
-    } else {
-    this.$message.error(`${!data.names ? '账户' : '密码'}错误`)
-    }
+    console.log('确定')
   }
   clickMenu (data: any) {
     this.$router.push({
@@ -91,11 +83,13 @@ export default class Index extends Vue {
     })
   }
   menuClicks (data:any) {
-    this.dialogShow = true
+    data.type === 5 ? this.outLogin() : this.dialogShow = true
   }
   closeDialog () {
     this.dialogShow = false
   }
+  @Inject('outLogin')
+  outLogin: any
 }
 /* 
 计算高度
@@ -112,16 +106,13 @@ $menu-width: 250px;
 .index{
     @include flex_c;
     @include wh_100;
-    background-color:rgba(201, 238, 240, 0.3);
-     /*filter: blur(1px);
-    background: url("../assets/img/back.jpg") no-repeat;
-    background-size: 100% 100%; */
+    background-color:rgba(201, 238, 240, 0.2);
+    position: absolute;
     .index-title{
         @include flex_r;
         @include w_100;
         height: $height;
         min-height: $height;
-        background: white;
         justify-content: space-around;
         .index-menu{
           @include flex_r;
@@ -141,13 +132,19 @@ $menu-width: 250px;
     .index-content{
         @include flex_r;
         @include w_100;
-        height: calc(100% - $height - 10px);
+        height: calc(100% - #{$height} - 10px);
         overflow: auto;
     }
     .dialog{
       @include flex_c;
       justify-content: space-around;
       @include wh_x(75%);
+    }
+    particles{
+        position:relative;
+        @include w_100;
+        height: calc(100% - #{$height} - 10px);
+        z-index: inherit;
     }
 }
 </style>

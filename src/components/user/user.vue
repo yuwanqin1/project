@@ -20,5 +20,6 @@ export default class User extends Vue {
     width: 100px;
     height: 100px;
     background: green;
+    color: red;
 }
 </style>
