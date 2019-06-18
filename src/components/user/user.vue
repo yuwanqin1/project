@@ -1,6 +1,7 @@
 <template>
     <div class="user">
         user修改测试vscdoe连接
+        <el-button @click="click">测试</el-button>
     </div>
 </template>
 
@@ -11,7 +12,9 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
   components: {}
 })
 export default class User extends Vue {
-
+    click () {
+        console.log('测试')
+    }
 }
 </script>
 

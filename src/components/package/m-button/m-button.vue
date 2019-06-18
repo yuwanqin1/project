@@ -11,7 +11,7 @@ import { Vue, Component, Prop, Emit } from 'vue-property-decorator'
     components: {}
 })
 export default class MButton extends Vue{
-    @Prop({ default: '', validator: value => ['', 'text-ok', 'text-cancel', 'text-error', 'primary', 'warning', 'error'].indexOf(value) !== -1})
+    @Prop({ default: '', validator: value => ['', 'text-ok', 'text-cancel', 'text-error', 'primary', 'warning', 'error', 'login', 'register'].indexOf(value) !== -1})
     type!: string
     @Prop({ default: '', validator: value => ['', 'small', 'large'].indexOf(value) !== -1 })
     size!: string

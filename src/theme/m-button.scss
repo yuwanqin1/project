@@ -119,3 +119,25 @@ $hoverMixWeight: 10%;
     }
   }
 }
+
+/* 登陆注册 */
+@mixin font-type($min: 80px,$max: 120px, $color: aqua, $hover: aqua){
+  min-width: $min;
+  max-width: $max;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  color: $color;
+  background: none;
+  border-radius: 10%;
+  &:hover{
+    border-color: $hover;
+    background: linear-gradient(to right, rgba(255,0,0,0), $hover, rgba(255,0,0,0)) !important;
+  }
+}
+.login{
+  @include font-type(80px, 120px,aqua,wheat );
+}
+.register{
+  @include font-type(80px, 120px,wheat,aqua );
+}

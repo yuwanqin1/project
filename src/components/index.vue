@@ -106,7 +106,6 @@ $menu-width: 250px;
 .index{
     @include flex_c;
     @include wh_100;
-    background-color:rgba(201, 238, 240, 0.2);
     position: absolute;
     .index-title{
         @include flex_r;

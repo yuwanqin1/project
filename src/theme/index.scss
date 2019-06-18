@@ -8,10 +8,6 @@
     @include w_100;
     @include h_100;
 }
-@mixin wh_x($size: 100%) {
-    width: $size;
-    height: $size;
-}
 
 @mixin flex_r {
     display: flex;
@@ -65,6 +61,11 @@
     overflow: hidden;
     text-overflow:ellipsis;
     white-space: nowrap;
+}
+
+@mixin wh_x($size: 100%) {
+    width: $size;
+    height: $size;
 }
 @mixin test {
     @include wh_100();
