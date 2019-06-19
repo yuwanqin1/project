@@ -265,6 +265,22 @@ export const MyComponent = Vue.extend({
 })
 ```
 
+```计算属性
+获取计算属性
+  get total(): number {
+    return this.count + 1
+  }
+
+  set total(param:number): void {
+    this.count = param
+  }
+```
+
+v-slot不能使用时:在组件第一行template后面添加xmlns:v-slot="http://www.w3.org/1999/XSL/Transform"
+
+```
+<template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
+```
 ## See also
 
 [vuex-class](https://github.com/ktsn/vuex-class/)

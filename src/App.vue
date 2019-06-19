@@ -24,6 +24,7 @@ import mButton from '@/components/package/m-button/m-button.vue'
 export default class App extends Vue {
   /* 通过控制index来判断用户是否登陆 */
   index: boolean = false
+  /* 联合声明: test: string | number */
   login () {
     this.index = true
   }
