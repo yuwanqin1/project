@@ -4,7 +4,7 @@
         <router-view/>
         <vue-particles/>
       </div>
-      <div v-else class="content">
+      <div v-else class="app-content">
         <div class="button">
             <m-button @click="login" type="login" style="margin-right: 30px;">登陆</m-button>
             <m-button @click="login" type="register">注册</m-button>
@@ -54,7 +54,7 @@ export default class App extends Vue {
   .router{
     @include wh_100;
   }
-  .content{
+  .app-content{
     @include flex_c;
     overflow: hidden;
     @include wh_100;
