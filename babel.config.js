@@ -1,8 +1,8 @@
 module.exports = {
-  "env":{
-    "development":{
-      "sourceMaps":true,
-      "retainLines":true, 
+  'env': {
+    'development': {
+      'sourceMaps': true,
+      'retainLines': true
     }
   },
   presets: [

@@ -284,3 +284,28 @@ v-slot不能使用时:在组件第一行template后面添加xmlns:v-slot="http:/
 ## See also
 
 [vuex-class](https://github.com/ktsn/vuex-class/)
+
+
+<!-- 断点调试配置，在 .vscode/launch.json文件里添加
+{
+  "name": "launch",
+  "type": "chrome",
+  "request": "launch",
+  "userDataDir": true,
+  "url": "http://localhost:8080",
+  "webRoot": "${workspaceFolder}/src",
+  "breakOnLoad": true,
+  "sourceMapPathOverrides": {
+    "webpack:///./src/*": "${webRoot}/*"
+  }
+}
+代码配置 实现launch+chrome断点调试功能
+提升:这里配置不成功:无法打开chrome选择目标,是google浏览器安装路径导致的问题，卸载重新安装解决
+配置完成-->
+
+<!-- 第一次拉去项目报错:
+      报错原因:提交时报错:原因是该电脑上没有版权进行提交
+      解决方法:因此需要在cmd去初始化用户名及邮箱或密码
+      git config name "yuwanqin1"
+      git config email 1561193788@qq.com
+      进行配置登录用户及用户名，才能完成提交  -->
